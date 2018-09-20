@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>vue</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="bootstrap.min.css">
+</head>
+<body >
+<div id="example" class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <div>
+            <h3>今日总目标:</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <textarea class="form-control col-md-8" rows="3" ></textarea>
+            </div>
+        </div>
+        <div>
+            <h3>目标分解:</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <ul class="list-unstyled">
+                        <li v-for = "goal in goal_array">
+                            <div class="block">
+                                <input type="checkbox" v-model="tempgoals">
+                                <span class="text-right">{{ goal.obj }}</span>
+                                <span class="text-right">预估: {{ goal.estimate_tomato}}</span>
+                                <button class="btn btn-default pull-right">删除</button>
+                            </div>
+
+                            <textarea class="form-control col-md-8" rows="2" ></textarea>
+                        </li>
+                    </ul>
+                </div>
+                <hr>
+            </div>
+            <div class="row">
+                    <input v-model="mygoal" class="col-md-4">
+                    <input v-model="mytomato"  class="col-md-2 col-md-offset-4">
+            </div>
+            <button v-on:click="add" >新增目标</button>
+        </div>
+        <div >
+            <h3>目标镜像:</h3>
+            <hr>
+            <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col-md-8">
+                    <ul class="list-unstyled">
+                        <li v-for = "goal in goal_array">
+                            <input type="checkbox" v-model="checkedGoals" v-on:click="check">
+                            <label>{{ goal.obj }}</label>
+                            <span>预估: {{ goal.estimate_tomato}}</span>
+                            <p>实际: {{ goal.cost_tomato}}</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div >
+            <h3>每日反馈:</h3>
+            <hr>
+            <h5>预估与实际有偏差的目标:</h5>
+            <div>
+                <ul>
+                    <li v-for = "goal in feedback_goals">
+                        <input type="checkbox" v-model="checkedfeedback">
+                        <label>{{ goal.obj }}</label>
+                        <p>原因:</p>
+                        <textarea  cols="30" rows="5"></textarea>
+                        <p>原因类型归类:</p>
+                        <select v-model="selectedreason">
+                            <option v-for = "reason in reasonarray"></option>
+                        </select>
+                        <button>新增类型</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+</body>
+<script src="work_tracking.js"></script>
+</html>
