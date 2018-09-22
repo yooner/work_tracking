@@ -3,7 +3,7 @@ new Vue({
     data:{
         goal_array:[
             {
-                obj:'有钱',
+                obj:'如何解决比较贫穷的问题，要想富先修路',
                 estimate_tomato:10,
                 cost_tomato:10
             }

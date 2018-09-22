@@ -26,13 +26,17 @@
                 <div class="col-md-8">
                     <ul class="list-unstyled">
                         <li v-for = "goal in goal_array">
-                            <div class="block">
-                                <input type="checkbox" v-model="tempgoals">
-                                <span class="text-right">{{ goal.obj }}</span>
-                                <span class="text-right">预估: {{ goal.estimate_tomato}}</span>
-                                <button class="btn btn-default pull-right">删除</button>
+                            <div class="block row">
+                                <div class="checkbox">
+                                    <label>
+                                        <input type="checkbox" v-model="tempgoals">{{ goal.obj }}
+                                    </label>
+                                </div>
+                                <div class="col-md-2 offset-3">
+                                    <span class="">预估: {{ goal.estimate_tomato }}</span>
+                                    <button class="btn btn-default btn-sm">删除</button>
+                                </div>
                             </div>
-
                             <textarea class="form-control col-md-8" rows="2" ></textarea>
                         </li>
                     </ul>
