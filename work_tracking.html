@@ -5,6 +5,18 @@
     <title>vue</title>
     <script src="vue.js"></script>
     <link rel="stylesheet" href="bootstrap.min.css">
+    <style>
+        .left {
+            margin-left: 15%;
+        }
+        .right {
+            float: right;
+            margin-right: 15%;
+        }
+        .clear{
+            clear:both;
+        }
+    </style>
 </head>
 <body >
 <div id="example" class="row">
@@ -13,20 +25,18 @@
         <div>
             <h3>今日总目标:</h3>
             <hr>
-            <div class="row">
-                <div class="col-md-2"></div>
+            <div class="row left">
                 <textarea class="form-control col-md-8" rows="3" ></textarea>
             </div>
         </div>
         <div>
             <h3>目标分解:</h3>
             <hr>
-            <div class="row">
-                <div class="col-md-2"></div>
+            <div class="row left">
                 <div class="col-md-8">
                     <ul class="list-unstyled">
                         <li v-for = "goal in goal_array">
-                            <div class="block row">
+                            <div class="row">
                                 <div class="checkbox">
                                     <label>
                                         <input type="checkbox" v-model="tempgoals">{{ goal.obj }}
@@ -43,27 +53,33 @@
                 </div>
                 <hr>
             </div>
-            <div class="row">
-                    <input v-model="mygoal" class="col-md-4">
-                    <input v-model="mytomato"  class="col-md-2 col-md-offset-4">
+            <div class="left">
+                <form>
+                    <div class="">
+                        <input v-model="mygoal" class="col-md-4">
+                        <input v-model="mytomato"  class="col-md-2 offset-4">
+                    </div>
+                    <div class="form-group">
+                        <input type="button" v-on:click="add" value="新增目标">
+                    </div>
+                </form>
             </div>
-            <button v-on:click="add" >新增目标</button>
+
         </div>
         <div >
             <h3>目标镜像:</h3>
             <hr>
-            <div class="row">
-                <div class="col-md-2"></div>
-                <div class="col-md-8">
-                    <ul class="list-unstyled">
-                        <li v-for = "goal in goal_array">
-                            <input type="checkbox" v-model="checkedGoals" v-on:click="check">
-                            <label>{{ goal.obj }}</label>
-                            <span>预估: {{ goal.estimate_tomato}}</span>
-                            <p>实际: {{ goal.cost_tomato}}</p>
-                        </li>
-                    </ul>
-                </div>
+            <div class="left">
+                <ul class="list-unstyled">
+                    <li v-for = "(goal, index) in goal_array" class="clear">
+                        <input type="checkbox" v-model="checkedGoals"  v-bind:value="goal.obj" v-on:click="check(index)">
+                        <label>{{ goal.obj }}</label>
+                        <span class="right">预估: {{ goal.estimate_tomato }}</span>
+                        <div>
+                            <p class="right">实际: {{ goal.cost_tomato }}</p>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </div>
         <div >

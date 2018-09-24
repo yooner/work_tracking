@@ -15,7 +15,9 @@ new Vue({
         checkedfeedback:[],
         feedback_goals:[],
         reasonarray:[],
-        selectedreason:''
+        selectedreason:'',
+        checkedNames:[],
+        count:0
     },
     methods:{
         add: function () {
@@ -27,10 +29,13 @@ new Vue({
             goal_object.obj = this.mygoal;
             goal_object.estimate_tomato = this.mytomato;
             this.goal_array.push(goal_object);
+            this.count += 1;
             console.log(this.goal_array);
         },
-        check: function () {
+        check: function (index) {
             //
+            console.log(this.checkedGoals.length, this.count);
+
         }
 
     }
