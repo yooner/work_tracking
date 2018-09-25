@@ -103,8 +103,32 @@
             </div>
         </div>
     </div>
+
     <div class="col-md-2"></div>
+    <!-- Small modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
+
+    <div id="myModal" class="modal fade bd-example-modal-sm">
+        <div class="modal-dialog modal-sm">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4>haha</h4>
+                </div>
+                <div class="modal-body">
+                    <h3>nice</h3>
+                </div>
+                <div class="modal-footer">
+                    <h3>nice</h3>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
 </body>
+<script src="jquery-3.2.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
 <script src="work_tracking.js"></script>
+<script>
+    $('#myModal').modal('show')
+</script>
 </html>
