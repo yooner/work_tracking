@@ -76,28 +76,29 @@
                         <label>{{ goal.obj }}</label>
                         <span class="right">预估: {{ goal.estimate_tomato }}</span>
                         <div>
-                            <p class="right">实际: {{ goal.cost_tomato }}</p>
+                            <p class="right" v-on:click="showmodaltomato(index)">实际: {{ goal.cost_tomato }}</p>
                         </div>
                     </li>
                 </ul>
             </div>
         </div>
         <div >
-            <h3>每日反馈:</h3>
+            <h3 v-on:click="showfeedback">每日反馈:</h3>
             <hr>
             <h5>预估与实际有偏差的目标:</h5>
-            <div>
+            <div v-show="show_switch">
                 <ul>
                     <li v-for = "goal in feedback_goals">
                         <input type="checkbox" v-model="checkedfeedback">
                         <label>{{ goal.obj }}</label>
+                        <span class="right">差距: {{ goal.gap_tomato }}</span>
                         <p>原因:</p>
-                        <textarea  cols="30" rows="5"></textarea>
+                        <textarea class="form-control col-md-8" rows="2" ></textarea>
                         <p>原因类型归类:</p>
                         <select v-model="selectedreason">
                             <option v-for = "reason in reasonarray"></option>
                         </select>
-                        <button>新增类型</button>
+                        <button class="btn btn-primary">新增类型</button>
                     </li>
                 </ul>
             </div>
@@ -106,19 +107,17 @@
 
     <div class="col-md-2"></div>
     <!-- Small modal -->
-    <button type="button" class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-sm">Small modal</button>
-
     <div id="myModal" class="modal fade bd-example-modal-sm">
         <div class="modal-dialog modal-sm">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h4>haha</h4>
+                    <h4>实际番茄数量</h4>
                 </div>
                 <div class="modal-body">
-                    <h3>nice</h3>
+                    <input type="number" v-model="readltomatonum">
                 </div>
                 <div class="modal-footer">
-                    <h3>nice</h3>
+                    <button class="btn btn-default" v-on:click="confirmrealtomato">确定</button>
                 </div>
             </div>
         </div>
@@ -128,7 +127,4 @@
 <script src="jquery-3.2.1.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script src="work_tracking.js"></script>
-<script>
-    $('#myModal').modal('show')
-</script>
 </html>
